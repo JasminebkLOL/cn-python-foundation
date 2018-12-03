@@ -26,3 +26,18 @@ with open('calls.csv', 'r') as f:
 电话号码不能重复，每行打印一条，按字典顺序排序后输出。
 """
 
+callOut = set()
+callIn = set()
+textsInAndOut = set()
+for call in calls:
+    callOut.add(call[0])
+    callIn.add(call[1])
+for text in texts:
+    textsInAndOut.add(text[0])
+    textsInAndOut.add(text[1])
+marketNumber = callOut - callIn - textsInAndOut
+print("These numbers could be telemarketers: ")
+marketNumber = list(marketNumber)
+sorted_market_number = sorted(marketNumber, key=lambda x: x)
+for i in sorted_market_number:
+    print(i)

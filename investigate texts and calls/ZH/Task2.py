@@ -3,6 +3,7 @@
 你将在以后的课程中了解更多有关读取文件的知识。
 """
 import csv
+import operator
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
@@ -23,3 +24,26 @@ September 2016.".
 如果键不存在于字典内，将此键加入字典，并将它的值设为给定值。
 """
 
+d={}
+# for i in texts:
+#     if i[0] in d:
+#         d[i[0]] += i[2]
+#     else:
+#         d[i[0]] = i[2]
+#     if i[1] in d:
+#         d[i[1]] += i[2]
+#     else:
+#         d[i[1]] = i[2]
+
+for i in calls:
+    if i[0] in d:
+        d[i[0]] += int(i[3])
+    else:
+        d[i[0]] = int(i[3])
+    if i[1] in d:
+        d[i[1]] += int(i[3])
+    else:
+        d[i[1]] = int(i[3])
+# print(d)
+sorted_x= sorted(d.items(),key=operator.itemgetter(1))
+print ("{0} spent the longest time, {1} seconds, on the phone during September 2016.".format(sorted_x[-1][0],sorted_x[-1][1]))
